@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Mapbox from "@rnmapbox/maps";
+import { StyleSheet, View } from "react-native";
 
-export default function App() {
+Mapbox.setWellKnownTileServer('Mapbox');
+Mapbox.setAccessToken("pk.eyJ1Ijoic2FuaWNoMTIzIiwiYSI6ImNsaWFkNmptaDAyaTczcm11NHF0cmp3d2sifQ.ZKH9THateIfnZ7zC23f3-g");
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.page}>
+      <View style={styles.container}>
+        <Mapbox.MapView style={styles.map} />
+      </View>
     </View>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
-  container: {
+  page: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  container: {
+    height: 300,
+    width: 300,
+  },
+  map: {
+    flex: 1,
   },
 });
